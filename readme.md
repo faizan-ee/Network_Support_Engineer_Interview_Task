@@ -1,52 +1,147 @@
-# Network Support Engineer LAB Practical:
+# Network Support Engineer Practical Lab
 
-## Mikrotik CHR Firewall & RADIUS Lab
+**Comprehensive Hands-On Lab for MikroTik CHR Firewall, Hotspot & RADIUS Automation**
 
-This repository documents a complete hands-on lab involving Mikrotik CHR, VirtualBox, Winbox firewall configuration, RADIUS setup using Ansible, and hotspot configuration.
+This repository documents a full hands-on practical task covering:
+- Setup of MikroTik CHR in VirtualBox
+- Firewall configuration
+- Ansible automation for RADIUS/Hotspot
+- Verification via Winbox  
+Each step is documented with annotated screenshots, configuration files, and structured playbooks.
 
-The project is executed step-by-step with configuration files, screenshots, and automation artifacts for clarity and reproducibility.
+---
 
-## Project Status
-- Phase 1: VirtualBox & CHR setup – Completed
-- Phase 2: Firewall configuration – Completed
-- Phase 3: Ansible & RADIUS – In progress
+## Table of Contents
 
-## Phase 1 – Mikrotik CHR Setup on VirtualBox
+1. [Project Overview](#project-overview)  
+2. [Repository Structure](#repository-structure)  
+3. [Prerequisites](#prerequisites)  
+4. [Step-by-Step Work Completed](#step-by-step-work-completed)  
+   - [Phase 1: VirtualBox & CHR Setup](#phase-1-virtualbox-chr-setup)  
+   - [Phase 2: Firewall Configuration](#phase-2-firewall-configuration)  
+   - [Phase 3: Ansible Playbook for RADIUS](#phase-3-ansible-playbook-for-radius)  
+   - [Phase 4: RADIUS Verification](#phase-4-radius-verification)  
+5. [Challenges Encountered](#challenges-encountered)  
+6. [References and Resources](#references-and-resources)  
 
-- Installed Oracle VirtualBox and Extension Pack
-- Imported Mikrotik CHR image
-- Configured network adapter to obtain IP via DHCP
-- Verified MAC addresses of ether1 and ether2
-- Confirmed CHR accessibility
+---
 
-All configuration evidence is provided under:
-`Screenshots/Phase-1-VirtualBox/`
+## Project Overview
 
-## Phase 2 – Firewall Rule Configuration
+This lab demonstrates **professional network automation using Ansible**, combined with **hands-on configuration of MikroTik RouterOS CHR** using Winbox and VirtualBox. Each technical milestone is captured with:
+- Configuration files (`.rsc`, playbooks)
+- Inventory files (`hosts`)
+- Screenshots for verification  
+This README is designed so that any reviewer can:
+- Understand the intent of each component
+- Navigate directly to relevant artifacts
+- Reproduce the environment if needed. :contentReference[oaicite:1]{index=1}
 
-- Accessed Mikrotik CHR using Winbox via MAC address
-- Configured firewall rule to block TCP 443 traffic to destination 1.1.1.1
-- Verified rule placement and action
+---
 
-Screenshot:
-`Screenshots/Phase-2-Firewall/Firewall.png`
+## Repository Structure
 
-## Phase 3 – RADIUS Configuration Using Ansible
+Below is the high-level organization of the repository:
 
-- Installed and configured Ansible on Ubuntu 24.04 using WSL
-- Integrated WSL with VS Code for playbook development
-- Created an Ansible inventory file (`hosts`) with Mikrotik CHR connection parameters
-- Developed an Ansible playbook (`RADIUS.yml`) to configure a RADIUS client on Mikrotik CHR
-- Successfully executed the playbook and validated task execution
 
-Screenshot of Ansible execution:
-`Screenshots/Phase-3-Ansible/Ansible.png`
+---
 
-## Phase 4 – RADIUS Verification via Winbox
+## Prerequisites
 
-- Verified RADIUS client configuration through Winbox
-- Confirmed RADIUS server address, secret, and hotspot service association
-- Ensured configuration applied as intended by Ansible automation
+Before applying any playbook or configuration:
+- **Oracle VirtualBox** installed with Extension Pack
+- **MikroTik CHR image**
+- **WSL2 (Ubuntu 24.04)** for Ansible control
+- **VS Code + Remote-WSL integration**
+- **Winbox** accessible to CHR via MAC or IP
+
+Networking requirements:
+- CHR should obtain an IP from VirtualBox DHCP
+- Ansible control host (WSL) must reach CHR via API/SSH
+
+---
+
+## Step-by-Step Work Completed
+
+---
+
+### Phase 1: VirtualBox & CHR Setup
+
+Documented the virtualization setup of MikroTik CHR:
+- Imported the CHR image into VirtualBox
+- Configured network adapters
+- Verified DHCP assignment and interfaces
+- Matched MAC addresses against configured ports  
+**Browse artifacts:**
+- `Screenshots/`  
+  - See `MikroTik CHR VM Settings.png`, `MAC & DHCP IP.png`
+
+Refer to these assets for configuration evidence.
+
+---
+
+### Phase 2: Firewall Configuration
+
+Configured firewall rules using **Winbox**:
+- Blocked specific traffic (e.g., TCP 443) as per exercise
+- Confirmed rule order and effect  
+**Browse artifacts:**  
+- `Screenshots/Firewall.png`
+
+---
+
+### Phase 3: Ansible Playbook for RADIUS
+
+Developed automation using Ansible:
+- Created a **hosts** inventory for CHR
+- Built `RADIUS.yml` playbook to:
+  - Add RADIUS client entries
+  - Configure services for Hotspot authentication
+- Executed playbook successfully from WSL
+
+Artifact reference:
+- `/AnsiblePlaybook/RADIUS.yml`
+- `hosts` inventory
 
 Verification screenshot:
-`Screenshots/Phase-4-RADIUS/RADIUS.png`
+- `Screenshots/Ansible.png`
+
+---
+
+### Phase 4: RADIUS Verification
+
+After Ansible automation:
+- Verified RADIUS client configuration via **Winbox**
+- Confirmed attributes (server, secret, services)
+- Ensured Hotspot is using the RADIUS server
+
+Verification artifact:
+- `Screenshots/RADIUS.png`
+
+---
+
+## Challenges Encountered
+
+Throughout the task, the following considerations were noted:
+
+- **Connectivity Between WSL & CHR:** Windows to WSL network integration required precise VirtualBox adapter configuration to ensure reachability from Ubuntu Ansible control node.
+- **Winbox Access via MAC:** MikroTik CHR sometimes required MAC-Winbox access when direct IP access was not yet configured.
+- **Ansible Modules for RouterOS:** RouterOS API versus SSH connection parameters required careful inventory settings to avoid playbook failures.  
+  More on RouterOS API/Ansible here: https://docs.ansible.com/projects/ansible/latest/collections/community/routeros/index.html :contentReference[oaicite:2]{index=2}
+
+---
+
+## References and Resources
+
+Resources that supported this work:
+- GitHub documentation on README best practices (why clear docs matter) :contentReference[oaicite:3]{index=3}
+- Community RouterOS modules for Ansible automation :contentReference[oaicite:4]{index=4}
+- MikroTik RADIUS conceptual guide from official RouterOS docs :contentReference[oaicite:5]{index=5}
+
+These helped shape the automation approach and README structure.
+
+---
+
+
+## Thanks
+
