@@ -134,9 +134,9 @@ Throughout the task, the following considerations were noted:
 ## References and Resources
 
 Resources that supported this work:
-- GitHub documentation on README best practices (why clear docs matter) :contentReference[oaicite:3]{index=3}
-- Community RouterOS modules for Ansible automation :contentReference[oaicite:4]{index=4}
-- MikroTik RADIUS conceptual guide from official RouterOS docs :contentReference[oaicite:5]{index=5}
+- GitHub documentation on README best practices (why clear docs matter).
+- Community RouterOS modules for Ansible automation.
+- MikroTik RADIUS conceptual guide from official RouterOS docs.
 
 These helped shape the automation approach and README structure.
 
@@ -144,4 +144,5 @@ These helped shape the automation approach and README structure.
 
 
 ## Thanks
+
 
